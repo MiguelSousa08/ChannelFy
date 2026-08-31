@@ -240,15 +240,27 @@
   .photo-frame{
     position:relative;
     width:180px; height:180px;
+    flex-shrink:0;
+  }
+  .photo-frame .ring{
+    position:absolute; inset:0;
     border-radius:50%;
     border:2px solid var(--signal);
-    flex-shrink:0;
-    overflow:visible;
+    box-sizing:border-box;
+  }
+  .photo-frame .ring-top{
+    clip-path:inset(0 0 50% 0);
+    z-index:1;
+  }
+  .photo-frame .ring-bottom{
+    clip-path:inset(50% 0 0 0);
+    z-index:3;
   }
   .photo-frame img{
     position:absolute;
+    z-index:2;
     bottom:0; left:50%;
-    transform:translateX(-50%);
+    transform:translateX(-32%);
     width:260px;
     height:auto;
     border:none;
@@ -461,7 +473,9 @@
   <div class="wrap">
     <div class="about">
       <div class="photo-frame">
+        <div class="ring ring-top"></div>
         <img src="foto.png" alt="Fundador da ChannelFy">
+        <div class="ring ring-bottom"></div>
       </div>
       <div>
         <h3>Fundador</h3>
