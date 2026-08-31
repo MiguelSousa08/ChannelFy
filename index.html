@@ -232,10 +232,28 @@
     background:var(--ink-soft);
   }
   .about img{
-    width:280px; height:280px;
+    width:180px; height:180px;
     border-radius:50%;
     object-fit:cover;
     border:2px solid var(--signal);
+  }
+  .photo-frame{
+    position:relative;
+    width:180px; height:180px;
+    border-radius:50%;
+    border:2px solid var(--signal);
+    flex-shrink:0;
+    overflow:visible;
+  }
+  .photo-frame img{
+    position:absolute;
+    bottom:0; left:50%;
+    transform:translateX(-50%);
+    width:260px;
+    height:auto;
+    border:none;
+    border-radius:0;
+    object-fit:contain;
   }
   .about h3{font-size:1.15rem; margin-bottom:6px;}
   .about p{color:var(--paper-dim); font-size:0.95rem;}
@@ -304,7 +322,7 @@
     animation-delay:2s;
   }
   .splash img{
-    width:330px; height:330px;
+    width:130px; height:130px;
     opacity:0;
     animation:iconFadeInOut 2s ease forwards;
   }
@@ -342,7 +360,8 @@
     .btn{text-align:center;}
     .audience{padding:28px 22px;}
     .about{padding:24px;}
-    .about img{width:130px; height:130px;}
+    .photo-frame{width:130px; height:130px;}
+    .photo-frame img{width:190px;}
     .splash img{width:90px; height:90px;}
   }
 </style>
@@ -441,9 +460,11 @@
 <section id="sobre">
   <div class="wrap">
     <div class="about">
-      <img src="foto.png" alt="Fundador da ChannelFy">
+      <div class="photo-frame">
+        <img src="foto.png" alt="Fundador da ChannelFy">
+      </div>
       <div>
-        <h3>Miguel Costa Sousa | Fundador do projeto ChannelFy</h3>
+        <h3>Fundador</h3>
         <p>Engenharia Informática, Universidade do Minho</p>
       </div>
     </div>
