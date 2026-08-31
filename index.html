@@ -53,26 +53,28 @@
     border-bottom:1px solid var(--line);
   }
   header .wrap{
-    display:flex; align-items:center; justify-content:center;
-    padding-top:22px; padding-bottom:22px;
+    display:flex; align-items:center; justify-content:space-between;
+    padding-top:20px; padding-bottom:20px;
+    flex-wrap:wrap; gap:10px;
   }
   .logo{
-    font-family:'Orbitron', sans-serif;
-    font-weight:800; font-size:1.5rem; letter-spacing:0.03em;
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:700; font-size:1.3rem; letter-spacing:-0.01em;
   }
   .logo-link{
     text-decoration:none; color:var(--paper);
-    display:inline-block; padding:6px 10px;
+    display:inline-block; padding:6px 4px;
     transition:opacity .2s ease;
   }
   .logo-link:hover{opacity:0.75;}
   .logo span{color:var(--signal);}
-  footer nav a{
-    text-decoration:none; color:var(--paper-dim); font-size:0.95rem; margin-right:26px;
+  header nav{display:flex; flex-wrap:wrap;}
+  header nav a{
+    text-decoration:none; color:var(--paper-dim); font-size:0.95rem; margin-left:24px;
     padding:6px 2px; display:inline-block;
     transition:color .2s ease;
   }
-  footer nav a:hover{color:var(--signal);}
+  header nav a:hover{color:var(--signal);}
 
   /* ---------- HERO ---------- */
   .hero{
@@ -80,20 +82,19 @@
     position:relative;
   }
   .hero-grid{
-    display:grid;
-    grid-template-columns:1.1fr 0.9fr;
-    gap:48px;
-    align-items:center;
+    max-width:640px;
+    margin:0 auto;
+    text-align:center;
   }
   .hero h1{
     font-size:clamp(2.3rem, 4.4vw, 3.4rem);
     font-weight:600;
     line-height:1.12;
     letter-spacing:-0.015em;
-    max-width:11.5ch;
+    margin:0 auto;
   }
   .hero p.lede{
-    margin-top:22px;
+    margin:22px auto 0;
     max-width:46ch;
     font-size:1.15rem;
     color:var(--paper-dim);
@@ -103,6 +104,7 @@
     display:flex;
     gap:16px;
     flex-wrap:wrap;
+    justify-content:center;
   }
   .btn{
     display:inline-block;
@@ -119,38 +121,6 @@
   .btn-primary:hover{transform:translateY(-2px); background:#8F4E17; box-shadow:0 6px 14px rgba(181,101,29,0.35);}
   .btn-ghost{background:transparent; border-color:var(--paper-dim); color:var(--paper); padding:16px 30px;}
   .btn-ghost:hover{border-color:var(--signal); color:var(--signal);}
-
-  /* frequency bars visual */
-  .freq-box{
-    display:flex;
-    align-items:flex-end;
-    justify-content:center;
-    gap:10px;
-    height:220px;
-    padding:0 20px;
-  }
-  .freq-box .bar{
-    width:14px;
-    border-radius:3px 3px 0 0;
-    background:var(--teal);
-    animation:barPulse 2.4s ease-in-out infinite;
-    transform-origin:bottom;
-  }
-  .freq-box .bar:nth-child(even){background:var(--signal);}
-  .freq-box .bar:nth-child(1){height:40%; animation-delay:0s;}
-  .freq-box .bar:nth-child(2){height:70%; animation-delay:.15s;}
-  .freq-box .bar:nth-child(3){height:35%; animation-delay:.3s;}
-  .freq-box .bar:nth-child(4){height:90%; animation-delay:.45s;}
-  .freq-box .bar:nth-child(5){height:55%; animation-delay:.6s;}
-  .freq-box .bar:nth-child(6){height:75%; animation-delay:.75s;}
-  .freq-box .bar:nth-child(7){height:45%; animation-delay:.9s;}
-  @keyframes barPulse{
-    0%,100%{transform:scaleY(0.7);}
-    50%{transform:scaleY(1);}
-  }
-  @media (prefers-reduced-motion: reduce){
-    .freq-box .bar{animation:none;}
-  }
 
   /* ---------- SECTION SHARED ---------- */
   section{padding:78px 0;}
@@ -262,7 +232,7 @@
     background:var(--ink-soft);
   }
   .about img{
-    width:110px; height:110px;
+    width:180px; height:180px;
     border-radius:50%;
     object-fit:cover;
     border:2px solid var(--signal);
@@ -330,16 +300,19 @@
     position:fixed; inset:0; z-index:9999;
     background:var(--ink);
     display:flex; align-items:center; justify-content:center;
-    animation:splashOut 0.6s ease forwards;
-    animation-delay:1.6s;
+    animation:splashOut 1s ease forwards;
+    animation-delay:2s;
   }
   .splash img{
-    width:56px; height:56px;
+    width:130px; height:130px;
     opacity:0;
-    animation:splashIconIn 0.5s ease forwards;
-    animation-delay:1s;
+    animation:iconFadeInOut 2s ease forwards;
   }
-  @keyframes splashIconIn{ to{opacity:1;} }
+  @keyframes iconFadeInOut{
+    0%{opacity:0;}
+    50%{opacity:1;}
+    100%{opacity:0;}
+  }
   @keyframes splashOut{
     0%{opacity:1; visibility:visible;}
     99%{opacity:0; visibility:visible;}
@@ -351,12 +324,26 @@
 
   /* ---------- RESPONSIVE ---------- */
   @media (max-width:820px){
-    .hero-grid{grid-template-columns:1fr;}
-    .freq-box{order:-1; height:160px;}
     .steps{grid-template-columns:1fr;}
     .audiences{grid-template-columns:1fr;}
     .audience:first-child{border-right:none; border-bottom:1px solid var(--line);}
     .contact-box{grid-template-columns:1fr;}
+    .about{flex-direction:column; text-align:center;}
+  }
+  @media (max-width:600px){
+    body{font-size:16px;}
+    section{padding:56px 0;}
+    .wrap{padding:0 20px;}
+    header .wrap{justify-content:center; text-align:center;}
+    header nav{justify-content:center; width:100%;}
+    header nav a{margin:0 12px;}
+    .hero{padding:56px 0 48px;}
+    .hero-ctas{flex-direction:column; align-items:stretch;}
+    .btn{text-align:center;}
+    .audience{padding:28px 22px;}
+    .about{padding:24px;}
+    .about img{width:130px; height:130px;}
+    .splash img{width:90px; height:90px;}
   }
 </style>
 </head>
@@ -369,6 +356,11 @@
     <a href="https://www.channelfy.store/" class="logo-link">
       <div class="logo">Channel<span>Fy</span></div>
     </a>
+    <nav>
+      <a href="#como-funciona">Como funciona</a>
+      <a href="#audiencias">Para quem</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
   </div>
 </header>
 
@@ -381,15 +373,6 @@
         <a href="#contacto" class="btn btn-primary">Sou criador de conteúdo</a>
         <a href="#contacto" class="btn btn-ghost">Sou uma marca</a>
       </div>
-    </div>
-    <div class="freq-box" aria-hidden="true">
-      <div class="bar"></div>
-      <div class="bar"></div>
-      <div class="bar"></div>
-      <div class="bar"></div>
-      <div class="bar"></div>
-      <div class="bar"></div>
-      <div class="bar"></div>
     </div>
   </div>
 </section>
@@ -502,12 +485,7 @@
 </section>
 
 <footer>
-  <div class="wrap" style="flex-direction:column; align-items:flex-start; gap:20px;">
-    <nav>
-      <a href="#como-funciona">Como funciona</a>
-      <a href="#audiencias">Para quem</a>
-      <a href="#contacto">Contacto</a>
-    </nav>
+  <div class="wrap" style="justify-content:center;">
     <div class="meta">© 2026 ChannelFy. Todos os direitos reservados.</div>
   </div>
 </footer>
