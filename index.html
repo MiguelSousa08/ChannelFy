@@ -468,26 +468,28 @@
       <p>A ChannelFy está a começar — neste momento à procura dos primeiros criadores e marcas parceiras. Escreve diretamente ou usa o formulário ao lado.</p>
       <a class="email-line" href="mailto:miguelcs.tech@gmail.com">miguelcs.tech@gmail.com</a>
     </div>
-    <form action="mailto:miguelcs.tech@gmail.com" method="post" enctype="text/plain">
+    <form action="https://formspree.io/f/SUBSTITUIR_PELO_TEU_ID" method="POST">
       <div class="field">
         <label for="nome">Nome</label>
-        <input type="text" id="nome" name="Nome" required>
+        <input type="text" id="nome" name="nome" required>
       </div>
       <div class="field">
         <label for="perfil">És criador ou marca?</label>
-        <select id="perfil" name="Perfil">
+        <select id="perfil" name="perfil">
           <option value="Criador">Criador de conteúdo</option>
           <option value="Marca">Marca</option>
         </select>
       </div>
       <div class="field">
         <label for="contacto-email">O teu email</label>
-        <input type="email" id="contacto-email" name="Email" required>
+        <input type="email" id="contacto-email" name="_replyto" required>
       </div>
       <div class="field">
         <label for="mensagem">Mensagem</label>
-        <textarea id="mensagem" name="Mensagem" placeholder="Conta-nos um pouco sobre ti ou a tua marca"></textarea>
+        <textarea id="mensagem" name="mensagem" placeholder="Conta-nos um pouco sobre ti ou a tua marca"></textarea>
       </div>
+      <input type="hidden" name="_subject" value="Novo contacto — ChannelFy">
+      <input type="text" name="_gotcha" style="display:none">
       <button type="submit" class="btn btn-primary" style="align-self:flex-start;">Enviar</button>
     </form>
   </div>
